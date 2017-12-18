@@ -64,7 +64,7 @@ body {
     padding: 30px;
     margin: 0 auto;
     position: relative;
-    background-color: #FFE4B5!important;   
+    background-color: #647382!important;   
 }
 
 .cell {
@@ -100,12 +100,16 @@ input[type="checkbox"] {
 
 h1, 
 .h1,
-h2 {
+h2,
+h3,
+h5 {
     font-family: "Raleway";
     margin-bottom: 2.5rem;
     font-weight: 900;
+    color: #fff;
 }
 h4 {
+    @extend h1;
     margin-bottom: 60px;
 }
 input[type=checkbox] {
@@ -186,9 +190,9 @@ button, button, .primary, .success {
 }
 
 tr > td { 
-    font-size: 13.5px;
+    font-size: 12px;
     letter-spacing: 1.1px;
-    font-weight:900;
+    font-weight:700;
 }
 .row {
     max-width: 95%!important;
@@ -206,9 +210,10 @@ ul li {
     padding: 0;
 }
 
-img .logo {
+img#logo {
     display: block!important;
     clear: both;
+    height: 17px;
     
 }
 

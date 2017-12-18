@@ -5,12 +5,12 @@ include 'inc/connection.php';
 
 if (!isset($_GET['id']) || empty($_GET['id']) || !is_numeric($_GET['id'])) {
     //@todo translate.
-    $errors[] = 'No shop specified!';
+    $errors[] = 'Ingen butik vald.';
 } else {
     /*
      * Get images list.
      */
-    $sql = 'SELECT title
+    $sql = 'SELECT title, filename
             FROM images';
 
     $statement = $pdo->prepare($sql);
@@ -69,10 +69,12 @@ if (!isset($_GET['id']) || empty($_GET['id']) || !is_numeric($_GET['id'])) {
                 <?php
                 foreach ($images as $image) {
                     $title = $image['title'];
+                    $filename = $image['filename'];
                     ?>
                     <li>
                         <span>
-                            <?php echo $title; ?>
+
+                        <img src="uploads/<?php echo $filename?>" alt="<?php echo $title; ?>">
                         </span>
                     </li>
                     <?php
@@ -82,6 +84,8 @@ if (!isset($_GET['id']) || empty($_GET['id']) || !is_numeric($_GET['id'])) {
             <?php
         }
         ?>
-        
+      	<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/what-input/dist/what-input.js"></script>
+		<script src="bower_components/foundation-sites/dist/js/foundation.js"></script>  
     </body>
 </html>

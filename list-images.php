@@ -77,12 +77,10 @@ $images = $statement->fetchAll();
                 ?>
                 <div class="row wide">
                     <div class="small-12 columns">
-                        <div class="alert callout" data-closable>
                             <i class="fa fa-exclamation-circle"></i> <?php echo $error; ?>
                             <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                        </div>
                     </div>
                 </div>
                 <?php
