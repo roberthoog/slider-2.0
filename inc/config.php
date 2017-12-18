@@ -3,12 +3,19 @@
 /*
  * Db configs.
  */
-define('HOST', 'localhost');
+define('HOST', 'localhost');     // mysql14.ilait.se
 define('PORT', 3306);
-define('DATABASE', 'db_test'); //''); ykpymexh_zlider
-define('USERNAME', 'root'); // 'ykpymexh');
-define('PASSWORD', 'r00t'); // 'Killemall88(!)');
+define('DATABASE', 'db_test');        // dgc117767
+define('USERNAME', 'root');     // udmygc362030
+define('PASSWORD', 'r00t');          // 3nkeLT?
 define('CHARSET', 'utf8');
+
+// define('HOST', 'mysql14.ilait.se');     // mysql14.ilait.se
+// define('PORT', 3306);
+// define('DATABASE', 'dgc117767');        // dgc117767
+// define('USERNAME', 'udmygc362030');     // udmygc362030
+// define('PASSWORD', '3nkeLT?');          // 3nkeLT?
+// define('CHARSET', 'utf8');
 
 /*
  * Upload configs.
