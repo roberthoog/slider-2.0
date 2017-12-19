@@ -50,7 +50,6 @@
 @include foundation-flex-classes;
 
 // @include foundation-prototype-classes;
-
 @include motion-ui-transitions;
 @include motion-ui-animations;
 @import url('https://fonts.googleapis.com/css?family=Raleway');
@@ -64,41 +63,44 @@ body {
     padding: 30px;
     margin: 0 auto;
     position: relative;
-    background-color: #647382!important;   
+    background-color: #647382!important;
 }
 
+
 .cell {
-	max-width: 90vw;
+    max-width: 90vw;
 }
+
 .sub-style {
     border-radius: 10px;
     padding: 10px;
 }
 
 label {
-	font-size: 16px;
-	font-weight: 900;
+    font-size: 16px;
+    font-weight: 900;
     margin-bottom: 10px;
-    margin-left: -20px;
+    margin-left: 0;
     letter-spacing: 1px;
+    color: #fff;
 }
 
 input[type="checkbox"] {
     width: 17px!important;
     height: 17px!important;
-    border:2px solid #fff!important;
+    border: 2px solid #fff!important;
 }
 
 
 .bordered {
 
     margin: 10px;
-    padding:10px;
+    padding: 10px;
     border: 5px solid lightGreen;
     max-width: 75vw;
 }
 
-h1, 
+h1,
 .h1,
 h2,
 h3,
@@ -108,21 +110,25 @@ h5 {
     font-weight: 900;
     color: #fff;
 }
+
 h4 {
     @extend h1;
     margin-bottom: 60px;
 }
+
 input[type=checkbox] {
     padding: 20px;
     margin: 5px;
 }
-input[type='text'], input[type='number'] {
-    max-width: 300px;
-        border:2px solid #222!important;
 
+input[type='text'],
+input[type='number'] {
+    max-width: 300px;
+    border: 2px solid #222!important;
 }
+
 legend {
-    padding:10px;
+    padding: 10px;
 }
 
 nav.menu {
@@ -134,111 +140,162 @@ nav.menu {
     margin: 0 auto 50px auto;
     text-align: center;
     display: block;
-    
-        @include clearfix;
-        
-        a:menu {color:#fff!important}
+
+    @include clearfix;
+
+    a:menu {
+        color: #fff!important
+    }
 }
+
 footer.menu {
     @extend nav;
     margin: 50px auto 0!important auto;
     position: relative;
     bottom: 0
 }
-strong { 
+
+strong {
     font-family: "Raleway";
     font-weight: 900;
     font-variant: small-caps;
-    font-size: 20px; 
-    letter-spacing: 1.1px;    
+    font-size: 20px;
+    letter-spacing: 1.1px;
 }
+
 #danger {
     background-color: #FF0000!important;
     color: #fff;
-    padding:10px;
+    padding: 10px;
 }
 
 table {
     margin: 10px auto;
-    width:99%;
+    width: 99%;
     overflow-x: hidden!important;
     @include breakpoint(medium down) {
-        width:98%;
+        width: 98%;
     }
 }
 
- .datepicker, 
- .ui-widget-header, 
- .ui-widget-content {
+.datepicker,
+.ui-widget-header,
+.ui-widget-content {
     background-color: #fff;
 }
+
 .ui-icon .ui-icon-circle-triangle-w {
     float: left;
-    padding:55px;
+    padding: 55px;
 }
+
 .ui-icon-circle-triangle-e {
     float: right;
-    padding:5px;
+    padding: 5px;
 }
-button, button, .primary, .success {
+
+button,
+button,
+.primary,
+.success {
     @extend button;
-    border-radius:0px!important;
+    border-radius: 0px!important;
 }
-.button#success {
-    background-color: #3adb76;
+
+.button.success {
+    background-color: #4d5966;
     color: #fff;
 }
 
-tr > td { 
+tr>td {
     font-size: 12px;
     letter-spacing: 1.1px;
-    font-weight:700;
+    font-weight: 700;
 }
+
 .row {
     max-width: 95%!important;
 }
+
 .wide {
-  width: 95%!important;
+    width: 95%!important;
 }
+
 .page-wrapper {
-    margin: 20px auto;
-    display: block; 
+    margin: 0 auto;
+    display: block;
 }
-ul li {
+
+ ul li {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
 img#logo {
-    display: block!important;
-    clear: both;
-    height: 17px;
-    
+    height: 20px;
+    display: block;
+    margin: 30px auto;
+    padding: 30px auto;
 }
+
+.cities-row {
+    width: 35vw;
+    @include breakpoint(medium down) {
+        width: 95vw;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 /* *************************************************************** */
-.fullscreen-image-slider {
-  .orbit-image {
-    width: 100%;
-    height: 100vh;
-  }
 
-  .orbit-caption {
-    bottom: 50%;
-    transform: translateY(50%);
-    background: none;
-    text-align: center;
-    color: $white;
-    font-weight: bold;
-  }
+.fullscreen-image-slider {
+    .orbit-image {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .orbit-caption {
+        bottom: 50%;
+        transform: translateY(50%);
+        background: none;
+        text-align: center;
+        color: $white;
+        font-weight: bold;
+    }
 }
 
 body {
-  padding: 0;
+    padding: 0;
 }
-

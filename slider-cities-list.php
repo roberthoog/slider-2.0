@@ -19,50 +19,57 @@ include 'inc/connection.php';
     Välj slider för butik
 </h1>
 <br>
-<div class="row">
-    <div class="column medium-12 small-12 text-center">
+<div class="row cities-row">
+    <div class="column medium-6 small-12 text-left">
         <h5>
-            <a href="slider.php?id=1">Stockholm City</a>
+          &raquo; &nbsp;   <a href="slider.php?id=1"><i class="angle-double-right"></i>Stockholm City</a>
         </h5>
         
         <h5>
-            <a href="slider.php?id=2">Stockholm Globen</a>
+            &raquo; &nbsp; <a href="slider.php?id=2">Stockholm Globen</a>
         </h5>
         
         <h5>
-            <a href="slider.php?id=3">Göteborg</a>
+            &raquo; &nbsp; <a href="slider.php?id=3">Göteborg</a>
         </h5>
         
         <h5>
-            <a href="slider.php?id=4">Malmö</a>
+            &raquo; &nbsp; <a href="slider.php?id=4">Malmö</a>
         </h5>
         
         <h5>
-            <a href="slider.php?id=5">Uppsala</a>
+            &raquo; &nbsp; <a href="slider.php?id=5">Uppsala</a>
         </h5>
         
         <h5>
-            <a href="slider.php?id=6">Västerås</a>
+            &raquo; &nbsp; <a href="slider.php?id=6">Västerås</a>
+        </h5>
+
+        </div>
+        <div class="column medium-6 small-12 text-right">
+
+        <h5>
+            <a href="slider.php?id=7">Örebro</a>&nbsp; &laquo; 
         </h5>
         
         <h5>
-            <a href="slider.php?id=7">Örebro</a>
+            <a href="slider.php?id=8">Linköping</a>&nbsp; &laquo; 
         </h5>
         
         <h5>
-            <a href="slider.php?id=8">Linköping</a>
+             <a href="slider.php?id=9">Jönköping</a>&nbsp; &laquo; 
         </h5>
         
         <h5>
-            <a href="slider.php?id=9">Jönköping</a>
+             <a href="slider.php?id=10">Norrköping</a>&nbsp; &laquo; 
         </h5>
         
         <h5>
-            <a href="slider.php?id=10">Norrköping</a>
+             <a href="slider.php?id=11">Växjö</a>&nbsp; &laquo; 
         </h5>
-        
+
         <h5>
-            <a href="slider.php?id=11">Växjö</a>
+             <a href="slider.php?id=11">Alla butikera</a>&nbsp; &laquo; 
         </h5>
 
 

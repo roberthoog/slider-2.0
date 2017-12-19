@@ -62,7 +62,6 @@ if (!isset($_GET['id']) || empty($_GET['id']) || !is_numeric($_GET['id'])) {
                 <?php
             }
             
-            require 'inc/footer.php';
         } else {
             ?>
             <ul class="cb-slideshow">
@@ -84,8 +83,9 @@ if (!isset($_GET['id']) || empty($_GET['id']) || !is_numeric($_GET['id'])) {
             <?php
         }
         ?>
-      	<script src="bower_components/jquery/dist/jquery.js"></script>
-		<script src="bower_components/what-input/dist/what-input.js"></script>
-		<script src="bower_components/foundation-sites/dist/js/foundation.js"></script>  
-    </body>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/what-input/dist/what-input.js"></script>
+        <script src="bower_components/foundation-sites/dist/js/foundation.js"></script>  
+<!--     <?php require 'inc/footer.php'; ?>
+ -->    </body>
 </html>

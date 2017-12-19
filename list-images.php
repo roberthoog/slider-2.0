@@ -103,11 +103,9 @@ $images = $statement->fetchAll();
 
         <div class="row">
             <div class="small-12 columns">
-                <div class="callout">
                     <a href="add-image.php" class="button success" title="Lägg till bild">
                         <i class="fa fa-plus" aria-hidden="true"></i> Lägg till bild
                     </a>
-                </div>
             </div>
         </div>
 
