@@ -42,7 +42,6 @@ if (!isset($_GET['id']) || empty($_GET['id']) || !is_numeric($_GET['id'])) {
         ?>
     </head>
     <body>
-
         <?php
         if (isset($errors)) {
             require 'inc/header.php';

@@ -193,8 +193,10 @@ $shops = $statement->fetchAll();
                 <form action="" method="post" enctype="multipart/form-data">
 
                     <div class="small-12 cell">
-                        <label for="imageTitle">Bildnamn med kort beskrivning</label>
+                        <fieldset class="small-4 cell fieldset">
+                            <legend>Bildnamn med kort beskrivning</legend>
                         <input type="text" name="imageTitle" id="imageTitle" placeholder="Wella Conditioner 500ml" value="<?php echo isset($imageTitle) ? $imageTitle : ''; ?>" required>
+                        </fieldset>
                     </div>
 
                     <div class="small-12 cell">
@@ -218,19 +220,25 @@ $shops = $statement->fetchAll();
                         </fieldset>
                     </div>
 
-                    <div class="small-12 cell">
-                        <label for="displayStartDate">Startdatum för bildens visning</label>
+                    <div class="small-4 cell">
+                         <fieldset class="small-4 cell fieldset">
+                            <legend>Startdatum för bildens visning</legend>
                         <input type="text" class="datepicker" name='displayStartDate' id="displayStartDate" value="<?php echo isset($displayStartDate) ? $displayStartDate : ''; ?>" required placeholder="2017-12-01">
+                        </fieldset>
                     </div>
 
                     <div class="small-12 cell">
-                        <label for="displayEndDate">Slutdatum för bildens visning</label>
+                         <fieldset class="small-12 cell fieldset">
+                            <legend>Slutdatum för bildens visning</legend>
                         <input type="text" class="datepicker" name="displayEndDate" id="displayEndDate" value="<?php echo isset($displayEndDate) ? $displayEndDate : ''; ?>" required placeholder="2018-01-01">
+                        </fieldset>
                     </div>
 
                     <div class="small-12 cell">
-                        <label for="displayDelay">Antal sekunder bild ska visas</label>
+                         <fieldset class="small-12 cell fieldset">
+                            <legend>Antal sekunder bild ska visas</legend>
                         <input type="number" name="displayDelay" id="displayDelay" value="<?php echo isset($displayDelay) ? $displayDelay : '0'; ?>" required placeholder="10">
+                        </fieldset>
                     </div>
 
                     <div class="small-12 cell">

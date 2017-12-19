@@ -8,17 +8,17 @@
             <ul class="menu align-center">
                 <li>
                     <a href="slider-cities-list.php">
-                        Gå till visningssidan
+                        Gå till visningssidan &nbsp;&nbsp;
                     </a>
                 </li>
                 <li>
                     <a href="list-images.php">
-                        Visa &amp; redigera bilder
+                        Visa &amp; redigera bilder&nbsp;&nbsp;
                     </a>
                 </li>
                 <li>
                         <a href="add-image.php">
-                            <i class="f302"></i>Lägg till bild
+                            <i class="f302"></i>&nbsp;&nbsp;Lägg till bild
                         </a>
                     </li>
                 </ul>

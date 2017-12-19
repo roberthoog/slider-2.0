@@ -33,7 +33,7 @@ $sql = 'SELECT
             imsh.images_shops_id,
             imsh.image_id,
             im.title,
-            im.path,
+            im.upload_date,
             im.filename,
             im.display_start_date,
             im.display_end_date,
@@ -65,7 +65,7 @@ $images = $statement->fetchAll();
 
         <div class="row">
             <div class="small-12 columns">
-                <h2>Gocciani bilddatabas</h2>
+                <h1>Gocciani bilddatabas</h1>
                 <h4>Här kan du genom knapparna till höger ändra datum, ta bort bilder samt visa dem.</h4>
                 <h5>Genom att klicka på rubrikerna sorterar du om bilderna från nyast till äldst eller tvärtom, eller i bokstavsordning. "Namn"-rubriken bör avslöja vilken bild det är, klicka annars på knappen "view" till höger.</h5>
             </div>
@@ -118,10 +118,10 @@ $images = $statement->fetchAll();
                                 <th class="dt-id-column">ID</th>
                                 <th>Butik</th>
                                 <th>Namn</th>
-                                <th>Path</th>
+                                <th>Uppladdat</th>
                                 <th>Filnamn</th>
-                                <th>Startdatum, visning</th>
-                                <th>Slutdatum, visning</th>
+                                <th>Startdatum</th>
+                                <th>Slutdatum</th>
                                 <th>Visning i sek</th>
                                 <th>Hantering</th>
                             </tr>
@@ -132,7 +132,7 @@ $images = $statement->fetchAll();
                                 $imagesShopsId = $image['images_shops_id'];
                                 $imageId = $image['image_id'];
                                 $title = $image['title'];
-                                $path = $image['path'];
+                                $upload_date = $image['upload_date'];
                                 $filename = $image['filename'];
                                 $displayStartDate = $image['display_start_date'];
                                 $displayEndDate = $image['display_end_date'];
@@ -150,7 +150,7 @@ $images = $statement->fetchAll();
                                         <?php echo $title; ?>
                                     </td>
                                     <td>
-                                        <?php echo $path; ?>
+                                        <?php echo $upload_date; ?>
                                     </td>
                                     <td>
                                         <?php echo $filename; ?>
