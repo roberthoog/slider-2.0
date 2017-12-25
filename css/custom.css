@@ -1,0 +1,165 @@
+body {}
+
+
+
+.page-wrapper-clean {
+    padding: 0;
+    background: ;
+}
+
+.callout {
+    border-left: none;
+    border-right: none;
+}
+
+table.dataTable {
+    width: 100% !important;
+}
+
+.dt-id-column {
+    display: none !important;
+}
+
+#viewImageModal {
+    padding: 0;
+}
+
+#viewImageModal .card {
+    border: none;
+}
+
+.messages {
+    margin-bottom: 20px;
+}
+
+.error-message,
+.success-message {
+    padding: 5px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.error-message {
+    background-color: #c00;
+}
+
+.success-message {
+    background-color: brightgreen;
+}
+
+legend {
+
+    border-spacing: 10px;
+    font-size: 22px;
+    font-weight: 900;
+    color: sandybrown!important;
+}
+
+button.success {
+    background-color: #e1b137;
+    color: #2f6343;
+}
+
+.callout>button.success {
+    background-color: sandybrown;
+    color: #fff;
+}
+
+
+fieldset {
+    border: 3px solid sandybrown;
+}
+
+.outline {
+    outline: 1px solid red;
+}
+
+a {
+    color: sandybrown!important;
+}
+
+.callout {
+    position: relative;
+    margin: 0 0 1rem 0;
+    padding: 1rem;
+    border: 1px solid sandybrown!important;
+    background-color: #222;
+    color: #0a0a0a;
+}
+
+input[type=checkbox]:hover {
+    background-color: green;
+}
+
+
+input[type=checkbox] {
+    background-color: green!important;
+}
+
+input[type='text'],
+input[type='number'] {
+    /*max-width: 100%;*/
+    border: 2px solid #222 !important;
+}
+
+.callout.alert {
+    background-color: #FF3F00;
+    color: #fff;
+    font-weight: bolder
+}
+
+h1 {
+    color: #fff;
+    text-shadow: 2px 2px 3px #222;
+}
+
+input[type=file] {
+    padding-right: 20px;
+    height: 40px;
+    font-family: "Raleway", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif !important;
+    color: #fff;
+}
+
+footer a:link {
+    color: gold;
+}
+
+footer {
+    margin-top: 150px!important;
+    position: sticky;
+    bottom: 0;
+    right: 0;
+    padding: 0;
+}
+
+footer hr {
+    border: 1px solid sandybrown;
+    width: 80%;
+}
+
+header {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+
+h5:hover {
+    color: #fff;
+}
+
+a .button {
+    color: #fff;
+}
+
+label {
+    color: #fff;
+}
+
+.full {
+    width: 100%!important;
+}
+
+//black text on dark grey
+.dataTables_info {
+    color: #fff!important;
+}
