@@ -2,23 +2,30 @@
 include 'inc/config.php';
 include 'inc/error-reporting.php';
 include 'inc/connection.php';
+// Read the shop id from the query string.
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $shopId = $_GET['id'];
 
-if (!isset($_GET['id']) || empty($_GET['id']) || !is_numeric($_GET['id'])) {
-    //@todo translate.
-    $errors[] = 'Ingen butik vald.';
-} else {
     /*
      * Get images list.
      */
-    $sql = 'SELECT title, filename
-            FROM images';
+    $sql = 'SELECT 
+                im.filename,
+                im.display_delay 
+            FROM images_shops AS imsh
+            LEFT JOIN images AS im ON im.image_id = imsh.image_id 
+            LEFT JOIN shops AS sh ON sh.shop_id = imsh.shop_id 
+            WHERE 
+                imsh.shop_id = :shop_id OR imsh.shop_id = '.$shopId.'
+                AND CURDATE() >= im.display_start_date 
+                AND CURDATE() <= im.display_end_date';
 
     $statement = $pdo->prepare($sql);
-    $statement->execute();
+    $statement->execute([
+        ':shop_id' => $shopId,
+    ]);
     $images = $statement->fetchAll();
 
-    // Shop id. To pass to slider-animations.php as query string value.
-    $shopId = $_GET['id'];
 }
 ?>
 
@@ -28,7 +35,7 @@ if (!isset($_GET['id']) || empty($_GET['id']) || !is_numeric($_GET['id'])) {
         <?php require 'inc/head-meta.php'; ?>
 
         <title>Slider</title>
-
+        <META HTTP-EQUIV="refresh" CONTENT="3600">
         <?php require 'inc/head-resources.php'; ?>
 
         <?php
@@ -66,13 +73,12 @@ if (!isset($_GET['id']) || empty($_GET['id']) || !is_numeric($_GET['id'])) {
             <ul class="cb-slideshow">
                 <?php
                 foreach ($images as $image) {
-                    $title = $image['title'];
                     $filename = $image['filename'];
                     ?>
                     <li>
                         <span>
 
-                        <img src="uploads/<?php echo $filename?>" alt="<?php echo $title; ?>">
+                        <img src="uploads/<?php echo $filename?>" alt="<?php echo $title?>">
                         </span>
                     </li>
                     <?php

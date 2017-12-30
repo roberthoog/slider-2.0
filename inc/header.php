@@ -7,8 +7,10 @@
         <nav class="menu text-center">
             <ul class="menu align-center">
                 <li>
-                    <a href="slider-cities-list.php">
-                        Gå till visningssidan &nbsp;&nbsp;
+                     <a href="slider-cities-list.php">
+
+<!--                     <a href="slider.php?id=12">    
+ -->                         Gå till visningssidan &nbsp;&nbsp;
                     </a>
                 </li>
                 <li>

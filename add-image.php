@@ -143,7 +143,27 @@ $shops = $statement->fetchAll();
         <title>Gocciani AB | Admin bildvisning</title>
 
         <?php require 'inc/head-resources.php'; ?>
-
+<script>
+    function Check(frm){
+      var checkBoxes = frm.elements['colors[]'];
+      for (i = 0; i < checkBoxes.length; i++){
+        checkBoxes[i].checked = (selectControl.innerHTML == "Select All") ? 'checked' : '';
+      }
+      selectControl.innerHTML = (selectControl.innerHTML == "Select All") ? "Unselect All" : 'Select All';
+    }
+    window.onload = function(){
+      var selectControl = document.getElementById("selectall");
+      selectControl.onclick = function(){Check(document.myform)};
+};
+ </script>   
+<!-- 
+//      $(document).ready(function() {
+//    $('#checkall').click(function() {
+//      var checked = $(this).prop('checked');
+//      $('#checkboxes').find('input:checkbox').prop('checked', checked);
+//    });
+//  })
+-->
     </head>
     <body>
 
@@ -177,7 +197,7 @@ $shops = $statement->fetchAll();
             <div class="row">
                 <div class="small-12 columns">
                     <div class="success callout" data-closable>
-                        <i class="fa fa-check-circle"></i> Bild uppladdad!
+                        <i class="fa fa-check-circle"></i> Bild <strong><?php echo "$imageFilename"; ?></strong> uppladdad!
                         <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -209,14 +229,20 @@ $shops = $statement->fetchAll();
 
                                 $checked = isset($selectedShops) && in_array($shopId, $selectedShops) ? 'checked' : '';
                                 ?>
-                                <input type="checkbox" name="shops[]" id="shop<?php echo $shopId; ?>" value="<?php echo $shopId; ?>" <?php echo $checked; ?>>
+                            <div id="checkboxes">
+
+    <input type="checkbox" name="shops[]" id="shop<?php echo $shopId; ?>" value="<?php echo $shopId; ?>"
+    <?php echo $checked; ?> >
                                 <label for="shop<?php echo $shopId; ?>">
                                     <?php echo $shopCity; ?>
                                 </label>
-                                <br/>
+                            </div>
                                 <?php
                             }
                             ?>
+                                
+                                 <label for="selectall" id="selectControl">Select All</label>
+                                 <input type="checkbox" id="selectall" />
                         </fieldset>
                     </div>
 

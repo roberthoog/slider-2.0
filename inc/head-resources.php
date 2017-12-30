@@ -18,6 +18,7 @@
 <!-- Custom -->
 <link href="css/app.css" type="text/css" rel="stylesheet">
 <link href="css/custom.css" type="text/css" rel="stylesheet">
+<link href="css/slider-animations.php" type="text/css" rel="stylesheet">
 
 <!-- ======================================= -->
 <!-- JS resources -->

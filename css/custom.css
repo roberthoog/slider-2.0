@@ -4,7 +4,6 @@ body {}
 
 .page-wrapper-clean {
     padding: 0;
-    background: ;
 }
 
 .callout {
@@ -44,7 +43,7 @@ table.dataTable {
 }
 
 .success-message {
-    background-color: brightgreen;
+    background-color: #07ef5b;
 }
 
 legend {
@@ -68,6 +67,7 @@ button.success {
 
 fieldset {
     border: 3px solid sandybrown;
+    width: auto;
 }
 
 .outline {
@@ -113,6 +113,16 @@ h1 {
     text-shadow: 2px 2px 3px #222;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+{
+    padding: 6px;
+}
+
 input[type=file] {
     padding-right: 20px;
     height: 40px;
@@ -139,6 +149,7 @@ footer hr {
 header {
     margin-top: 0;
     padding-top: 0;
+    width: 100vw;
 }
 
 
@@ -158,7 +169,16 @@ label {
     width: 100%!important;
 }
 
-//black text on dark grey
 .dataTables_info {
     color: #fff!important;
+}
+
+.menu {
+    width: fit-content;
+    padding: 2px;
+}
+
+a:hover {
+    border-bottom: 2px solid #7fa2c4;
+    transition: ease-in 5.5s ease 5.5s;
 }

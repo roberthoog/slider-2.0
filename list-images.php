@@ -90,7 +90,7 @@ $images = $statement->fetchAll();
             <div class="row">
                 <div class="small-12 columns">
                     <div class="success callout" data-closable>
-                        <i class="fa fa-check-circle"></i> Bild raderad.
+                        <strong><i class="fa fa-check-circle"></i> Bild raderad.</strong>
                         <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -120,24 +120,24 @@ $images = $statement->fetchAll();
                                 <th>Namn</th>
                                 <th>Uppladdat</th>
                                 <th>Filnamn</th>
-                                <th>Startdatum</th>
-                                <th>Slutdatum</th>
-                                <th>Visning i sek</th>
-                                <th>Hantering</th>
+                                <th>Start</th>
+                                <th>Slut</th>
+                                <th>Längd</th>
+                                <th>Hantera</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             foreach ($images as $image) {
-                                $imagesShopsId = $image['images_shops_id'];
-                                $imageId = $image['image_id'];
-                                $title = $image['title'];
-                                $upload_date = $image['upload_date'];
-                                $filename = $image['filename'];
+                                $imagesShopsId    = $image['images_shops_id'];
+                                $imageId          = $image['image_id'];
+                                $title            = $image['title'];
+                                $upload_date      = $image['upload_date'];
+                                $filename         = $image['filename'];
                                 $displayStartDate = $image['display_start_date'];
-                                $displayEndDate = $image['display_end_date'];
-                                $displayDelay = $image['display_delay'];
-                                $city = $image['city'];
+                                $displayEndDate   = $image['display_end_date'];
+                                $displayDelay     = $image['display_delay'];
+                                $city             = $image['city'];
                                 ?>
                                 <tr id="<?php echo $imagesShopsId; ?>">
                                     <td class="dt-id-column">
@@ -162,7 +162,7 @@ $images = $statement->fetchAll();
                                         <?php echo $displayEndDate; ?>
                                     </td>
                                     <td>
-                                        <?php echo $displayDelay; ?>
+                                        <?php echo $displayDelay; ?> sek
                                     </td>
                                     <td>
                                         <a href="<?php echo 'edit-image.php?id=' . $imageId; ?>" name="editImageButton" class="button primary small" title="Ändra">
