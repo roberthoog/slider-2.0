@@ -56,8 +56,8 @@ legend {
 }
 
 button.success {
-    background-color: #e1b137;
-    color: #2f6343;
+    background-color: #07ef5b;
+    color: #fff;
 }
 
 .callout>button.success {
@@ -126,7 +126,6 @@ footer a:link {
 
 footer {
     margin-top: 150px!important;
-    position: sticky;
     bottom: 0;
     right: 0;
     padding: 0;

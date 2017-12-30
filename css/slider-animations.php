@@ -20,6 +20,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
      */
     $sql = 'SELECT 
                 im.filename,
+                im.title,
                 im.display_delay 
             FROM images_shops AS imsh
             LEFT JOIN images AS im ON im.image_id = imsh.image_id 
