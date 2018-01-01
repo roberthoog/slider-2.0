@@ -10,8 +10,9 @@ include 'inc/connection.php';
     $images = $statement->fetchAll();
 
 // Shop id. To pass to slider-animations.php as query string value.
-if (isset($shop_id)) {
+if (isset($shop_id) && isset($shop_all)) {
     $shop_id = $_GET['id'];
+
 }
 ?>
 <!DOCTYPE html>

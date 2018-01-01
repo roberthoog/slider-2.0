@@ -31,13 +31,13 @@ include 'inc/connection.php';
 
     <div class="column medium-4">
         <div class="callout text-center">
-        <a href="slider-cities-list.php"><h3>Visa bildspel</h3></a>
+        <a href="slider.php?id=12"><h3>Visa bildspel</h3></a>
         </div> <!-- column medium-4 -->
     </div> <!-- callout -->
 
     <div class="column medium-4">
         <div class="callout text-center">
-        <a href="view-image.php"><h3>Visa &amp; redigera bilder</h3></a>
+        <a href="list-images.php"><h3>Visa &amp; redigera bilder</h3></a>
         </div> <!-- column medium-4 -->
     </div> <!-- callout -->
 

@@ -118,8 +118,7 @@ h2,
 h3,
 h4,
 h5,
-h6,
-{
+h6 {
     padding: 6px;
 }
 
@@ -147,9 +146,9 @@ footer hr {
 }
 
 header {
-    margin-top: 0;
+    margin: 0 auto;
     padding-top: 0;
-    width: 100vw;
+    max-width: 95vw;
 }
 
 
@@ -179,6 +178,12 @@ label {
 }
 
 a:hover {
-    border-bottom: 2px solid #7fa2c4;
-    transition: ease-in 5.5s ease 5.5s;
+    color: sandybrown;
+    transition: all 1s ease-out;
+}
+
+hr {
+    border-bottom: 2px;
+    border-style: solid;
+    border-color: sandybrown;
 }

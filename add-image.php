@@ -144,17 +144,7 @@ $shops = $statement->fetchAll();
 
         <?php require 'inc/head-resources.php'; ?>
 <script>
-    function Check(frm){
-      var checkBoxes = frm.elements['colors[]'];
-      for (i = 0; i < checkBoxes.length; i++){
-        checkBoxes[i].checked = (selectControl.innerHTML == "Select All") ? 'checked' : '';
-      }
-      selectControl.innerHTML = (selectControl.innerHTML == "Select All") ? "Unselect All" : 'Select All';
-    }
-    window.onload = function(){
-      var selectControl = document.getElementById("selectall");
-      selectControl.onclick = function(){Check(document.myform)};
-};
+
  </script>   
 <!-- 
 //      $(document).ready(function() {
@@ -221,28 +211,25 @@ $shops = $statement->fetchAll();
 
                     <div class="small-12 cell">
                         <fieldset class="small-12 cell fieldset">
-                            <legend>Butik där bild ska visas</legend>
+                            <legend>Butik bilden ska visas</legend>
                             <?php
                             foreach ($shops as $shop) {
                                 $shopId = $shop['shop_id'];
                                 $shopCity = $shop['city'];
 
                                 $checked = isset($selectedShops) && in_array($shopId, $selectedShops) ? 'checked' : '';
-                                ?>
-                            <div id="checkboxes">
+                                ?><br>
 
-    <input type="checkbox" name="shops[]" id="shop<?php echo $shopId; ?>" value="<?php echo $shopId; ?>"
+    <input type="radio" checked name="shops[]" id="shop<?php echo $shopId; ?>" value="<?php echo $shopId; ?>"
     <?php echo $checked; ?> >
                                 <label for="shop<?php echo $shopId; ?>">
                                     <?php echo $shopCity; ?>
                                 </label>
-                            </div>
                                 <?php
                             }
-                            ?>
+                    ?>
                                 
-                                 <label for="selectall" id="selectControl">Select All</label>
-                                 <input type="checkbox" id="selectall" />
+
                         </fieldset>
                     </div>
 

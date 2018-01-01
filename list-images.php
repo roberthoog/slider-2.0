@@ -66,8 +66,9 @@ $images = $statement->fetchAll();
         <div class="row">
             <div class="small-12 columns">
                 <h1>Gocciani bilddatabas</h1>
-                <h4>Här kan du genom knapparna till höger ändra datum, ta bort bilder samt visa dem.</h4>
-                <h5>Genom att klicka på rubrikerna sorterar du om bilderna från nyast till äldst eller tvärtom, eller i bokstavsordning. "Namn"-rubriken bör avslöja vilken bild det är, klicka annars på knappen "view" till höger.</h5>
+                <h5>Här kan du genom knapparna till höger ändra datum, ta bort bilder samt visa respektive bild.</h5>
+                <h5>Genom att klicka på rubrikerna sorterar du om bilderna från nyast till äldst eller tvärtom, eller i bokstavsordning.
+                 "Namn"-rubriken bör avslöja vilken bild det är, klicka annars på knappen "view" till höger.</h5>
             </div>
         </div>
 

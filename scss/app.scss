@@ -60,7 +60,7 @@ ul {
 
 body {
     font-family: 'Raleway'!important;
-    padding: 30px;
+    padding: 0;
     margin: 0 auto;
     position: relative;
     background-color: #647382!important;
@@ -134,17 +134,18 @@ legend {
 nav.menu {
 
     padding: 25px 10px;
-    background-color: #000;
+    /*    background-color: #000;*/
     font-size: 18px;
     font-weight: 700;
     margin: 0 auto 50px auto;
     text-align: center;
     display: block;
-
     @include clearfix;
 
-    a:menu {
-        color: #fff!important
+    a {
+        color: #fff!important;
+        padding: 0 25px 5px 0;
+        margin: 0;
     }
 }
 
@@ -171,7 +172,7 @@ strong {
 
 table {
     margin: 10px auto;
-    width: 99%;
+    max-width: 95%;
     overflow-x: hidden!important;
     @include breakpoint(medium down) {
         width: 98%;
@@ -226,7 +227,7 @@ tr>td {
     display: block;
 }
 
- ul li {
+ul li {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -245,6 +246,16 @@ img#logo {
         width: 95vw;
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

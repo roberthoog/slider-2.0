@@ -26,7 +26,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             LEFT JOIN images AS im ON im.image_id = imsh.image_id 
             LEFT JOIN shops AS sh ON sh.shop_id = imsh.shop_id 
             WHERE 
-                imsh.shop_id = :shop_id OR imsh.shop_id = '.$shopId.'
+                imsh.shop_id = :shop_id OR imsh.shop_id = \'.$shopId.\'
                 AND CURDATE() >= im.display_start_date 
                 AND CURDATE() <= im.display_end_date';
 

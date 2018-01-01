@@ -6,12 +6,14 @@ include 'inc/connection.php';
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $shopId = $_GET['id'];
 
+
     /*
      * Get images list.
      */
     $sql = 'SELECT 
                 im.filename,
-                im.display_delay 
+                im.display_delay,
+                imsh.image_id 
             FROM images_shops AS imsh
             LEFT JOIN images AS im ON im.image_id = imsh.image_id 
             LEFT JOIN shops AS sh ON sh.shop_id = imsh.shop_id 
@@ -23,8 +25,24 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $statement = $pdo->prepare($sql);
     $statement->execute([
         ':shop_id' => $shopId,
+
+
     ]);
     $images = $statement->fetchAll();
+
+/*
+    Get unique image ids if all shops are selected to avoid duplicate shows 
+    $image_id = $statement->fetchAll();
+    if ($shopId == 12) {
+    $sql = ' SELECT DISTINCT image_id 
+          FROM images_shops 
+          ORDER BY DATE(NOW()), image_id ASC';
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $image_id = $statement->fetchAll();
+    }
+*/ 
+
 
 }
 ?>
@@ -73,16 +91,25 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             <ul class="cb-slideshow">
                 <?php
                 foreach ($images as $image) {
-                    $filename = $image['filename'];
-                    ?>
+                        $filename = $image['filename'];
+                
+                // foreach ($image_id as $imageId) {
+                //          $id = $imageId['image_id'];
+                //     ?>
+
                     <li>
                         <span>
 
-                        <img src="uploads/<?php echo $filename?>" alt="<?php echo $title?>">
+                        <img src="uploads/<?php echo $filename; ?>" alt="<?php echo $title ?>" >
+                        <!-- 
+                        add after filename ending above if
+                        /*?id=<?php echo $id; ?> -->
+
                         </span>
                     </li>
                     <?php
                 }
+            
                 ?>
             </ul>
             <?php

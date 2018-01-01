@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8605d13b-72af-4c7d-a054-6294100d63ea" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/add-image.php" afterPath="$PROJECT_DIR$/add-image.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/custom.css" afterPath="$PROJECT_DIR$/css/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/slider-style.css" afterPath="$PROJECT_DIR$/css/slider-style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/config.php" afterPath="$PROJECT_DIR$/inc/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/footer.php" afterPath="$PROJECT_DIR$/inc/footer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/head-resources.php" afterPath="$PROJECT_DIR$/inc/head-resources.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/header.php" afterPath="$PROJECT_DIR$/inc/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/list-images.php" afterPath="$PROJECT_DIR$/list-images.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scss/app.scss" afterPath="$PROJECT_DIR$/scss/app.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/slider-animations.php" afterPath="$PROJECT_DIR$/css/slider-animations.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slider-cities-list.php" afterPath="$PROJECT_DIR$/slider-cities-list.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slider.php" afterPath="$PROJECT_DIR$/slider.php" />
     </list>
@@ -38,10 +31,10 @@
       <file leaf-file-name="slider-cities-list.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slider-cities-list.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.820513">
-              <caret line="35" column="53" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
+            <state vertical-scroll-proportion="-10.769231">
+              <caret line="14" column="11" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding>
-                <marker date="1514636079901" expanded="true" signature="110:153" placeholder="SELECT city,..shops..." />
+                <marker date="1514685186040" expanded="true" signature="110:153" placeholder="SELECT city,..shops..." />
               </folding>
             </state>
           </provider>
@@ -50,8 +43,8 @@
       <file leaf-file-name="custom.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.80154353">
-              <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
+            <state vertical-scroll-proportion="-0.05436573">
+              <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -70,12 +63,12 @@
       <file leaf-file-name="add-image.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/add-image.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-33.076923">
-              <caret line="235" column="30" selection-start-line="235" selection-start-column="30" selection-end-line="235" selection-end-column="30" />
+            <state vertical-scroll-proportion="-14.615385">
+              <caret line="211" column="25" selection-start-line="211" selection-start-column="25" selection-end-line="211" selection-end-column="25" />
               <folding>
-                <marker date="1514635838403" expanded="true" signature="2344:2872" placeholder="INSERT INTO images..." />
-                <marker date="1514635838403" expanded="true" signature="3530:3743" placeholder="INSERT INTO images_shops..." />
-                <marker date="1514635838403" expanded="true" signature="4014:4078" placeholder="SELECT shop_..shops..." />
+                <marker date="1514683281291" expanded="true" signature="2344:2872" placeholder="INSERT INTO images..." />
+                <marker date="1514683281291" expanded="true" signature="3530:3743" placeholder="INSERT INTO images_shops..." />
+                <marker date="1514683281291" expanded="true" signature="4014:4078" placeholder="SELECT shop_..shops..." />
               </folding>
             </state>
           </provider>
@@ -84,10 +77,21 @@
       <file leaf-file-name="slider.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/slider.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.153847">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state vertical-scroll-proportion="-8.461538">
+              <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
               <folding>
-                <marker date="1514600777925" expanded="true" signature="268:705" placeholder="SELECT im.fi..images_shops..." />
+                <marker date="1514685927073" expanded="true" signature="345:673" placeholder="SELECT im.fi..images_shops..." />
+                <marker date="1514685927073" expanded="true" signature="345:782" placeholder="SELECT im.fi..images_shops..." />
+                <marker date="1514685927073" expanded="true" signature="981:1015" placeholder="..." />
+                <marker date="1514685927073" expanded="true" signature="992:1015" placeholder="..." />
+                <marker date="1514685927073" expanded="true" signature="1577:1642" placeholder="..." />
+                <marker date="1514685927073" expanded="true" signature="1772:2281" placeholder="..." />
+                <marker date="1514685927073" expanded="true" signature="1823:2258" placeholder="..." />
+                <marker date="1514685927073" expanded="true" signature="1889:2231" placeholder="..." />
+                <marker date="1514685927073" expanded="true" signature="2090:2200" placeholder="..." />
+                <marker date="1514685927073" expanded="true" signature="2400:2508" placeholder="..." />
+                <marker date="1514685927073" expanded="true" signature="2568:2751" placeholder="..." />
+                <marker date="1514685927073" expanded="true" signature="2599:2725" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -101,10 +105,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/add-image.php" />
-        <option value="$PROJECT_DIR$/slider-cities-list.php" />
         <option value="$PROJECT_DIR$/css/slider-style.css" />
+        <option value="$PROJECT_DIR$/add-image.php" />
         <option value="$PROJECT_DIR$/css/custom.css" />
+        <option value="$PROJECT_DIR$/slider-cities-list.php" />
+        <option value="$PROJECT_DIR$/slider.php" />
       </list>
     </option>
   </component>
@@ -122,9 +127,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1910" />
+    <option name="x" value="5750" />
     <option name="width" value="1940" />
-    <option name="height" value="2117" />
+    <option name="height" value="2124" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -206,7 +211,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1910" y="0" width="1940" height="2117" extended-state="0" />
+    <frame x="5750" y="0" width="1940" height="2124" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -238,38 +243,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/slider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.153847">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <marker date="1514600777925" expanded="true" signature="268:705" placeholder="SELECT im.fi..images_shops..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/add-image.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-33.076923">
-          <caret line="235" column="30" selection-start-line="235" selection-start-column="30" selection-end-line="235" selection-end-column="30" />
-          <folding>
-            <marker date="1514635838403" expanded="true" signature="2344:2872" placeholder="INSERT INTO images..." />
-            <marker date="1514635838403" expanded="true" signature="3530:3743" placeholder="INSERT INTO images_shops..." />
-            <marker date="1514635838403" expanded="true" signature="4014:4078" placeholder="SELECT shop_..shops..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slider-cities-list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.820513">
-          <caret line="35" column="53" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
-          <folding>
-            <marker date="1514636079901" expanded="true" signature="110:153" placeholder="SELECT city,..shops..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/slider-style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-36.153847">
@@ -278,10 +251,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/slider-cities-list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.769231">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <marker date="1514685186040" expanded="true" signature="110:153" placeholder="SELECT city,..shops..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/add-image.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.615385">
+          <caret line="211" column="25" selection-start-line="211" selection-start-column="25" selection-end-line="211" selection-end-column="25" />
+          <folding>
+            <marker date="1514683281291" expanded="true" signature="2344:2872" placeholder="INSERT INTO images..." />
+            <marker date="1514683281291" expanded="true" signature="3530:3743" placeholder="INSERT INTO images_shops..." />
+            <marker date="1514683281291" expanded="true" signature="4014:4078" placeholder="SELECT shop_..shops..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.461538">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <folding>
+            <marker date="1514685927073" expanded="true" signature="345:673" placeholder="SELECT im.fi..images_shops..." />
+            <marker date="1514685927073" expanded="true" signature="345:782" placeholder="SELECT im.fi..images_shops..." />
+            <marker date="1514685927073" expanded="true" signature="981:1015" placeholder="..." />
+            <marker date="1514685927073" expanded="true" signature="992:1015" placeholder="..." />
+            <marker date="1514685927073" expanded="true" signature="1577:1642" placeholder="..." />
+            <marker date="1514685927073" expanded="true" signature="1772:2281" placeholder="..." />
+            <marker date="1514685927073" expanded="true" signature="1823:2258" placeholder="..." />
+            <marker date="1514685927073" expanded="true" signature="1889:2231" placeholder="..." />
+            <marker date="1514685927073" expanded="true" signature="2090:2200" placeholder="..." />
+            <marker date="1514685927073" expanded="true" signature="2400:2508" placeholder="..." />
+            <marker date="1514685927073" expanded="true" signature="2568:2751" placeholder="..." />
+            <marker date="1514685927073" expanded="true" signature="2599:2725" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/custom.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.80154353">
-          <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.05436573">
+          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="16" />
           <folding />
         </state>
       </provider>
