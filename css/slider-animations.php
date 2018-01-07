@@ -36,6 +36,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     ]);
     $images = $statement->fetchAll();
 
+    
     /*
      * Number of images. Used to decide if the last step of the @keyframes rule
      * should be written, or not: If the number of images = 1, then the step 
