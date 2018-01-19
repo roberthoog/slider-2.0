@@ -38,6 +38,9 @@ ul {
 
 
 
+
+
+
 /******************************************************/
 
 
@@ -67,7 +70,9 @@ ul {
     left: 0;
     max-width: 100%;
     color: transparent;
-    background: none;
+    background-size: cover;
+    background-repeat: none;
+
     opacity: 0;
     z-index: 0;
     -webkit-backface-visibility: hidden;

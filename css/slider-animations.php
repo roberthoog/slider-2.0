@@ -18,17 +18,21 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     /*
      * Get images list.
      */
-    $sql = 'SELECT 
+   $sql = 'SELECT 
                 im.filename,
-                im.title,
-                im.display_delay 
+                im.display_delay,
+                imsh.image_id,
+                im.display_start_date,
+                im.display_end_date,
+                imsh.shop_id         
             FROM images_shops AS imsh
             LEFT JOIN images AS im ON im.image_id = imsh.image_id 
             LEFT JOIN shops AS sh ON sh.shop_id = imsh.shop_id 
-            WHERE 
-                imsh.shop_id = :shop_id OR imsh.shop_id = \'.$shopId.\'
-                AND CURDATE() >= im.display_start_date 
-                AND CURDATE() <= im.display_end_date';
+             WHERE 
+                imsh.shop_id = :shop_id OR imsh.shop_id = 12
+                AND CURDATE() BETWEEN im.display_start_date AND im.display_end_date
+                GROUP BY im.image_id
+                ORDER BY im.upload_date DESC';
 
     $statement = $pdo->prepare($sql);
     $statement->execute([

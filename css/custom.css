@@ -1,4 +1,6 @@
-body {}
+body {
+    overflow-x: hidden;
+}
 
 
 
@@ -64,6 +66,10 @@ button.success {
     color: #fff;
 }
 
+.black {
+    background-color: #222;
+}
+
 
 fieldset {
     border: 3px solid sandybrown;
@@ -75,7 +81,11 @@ fieldset {
 }
 
 a {
-    color: sandybrown!important;
+    color: #222;
+}
+
+a:hover {
+    border-bottom: 1px solid sandybrown!important;
 }
 
 .callout {
@@ -133,30 +143,22 @@ footer a:link {
     color: gold;
 }
 
+
+header,
 footer {
-    margin-top: 150px!important;
-    bottom: 0;
-    right: 0;
-    padding: 0;
-}
-
-footer hr {
-    border: 1px solid sandybrown;
-    width: 80%;
-}
-
-header {
     margin: 0 auto;
     padding-top: 0;
-    max-width: 95vw;
+    max-width: 100vw;
+    background-color: #444;
+    border-top: 1px solid sandybrown;
+    position: relative;
 }
-
 
 h5:hover {
     color: #fff;
 }
 
-a .button {
+a.button {
     color: #fff;
 }
 
@@ -186,4 +188,15 @@ hr {
     border-bottom: 2px;
     border-style: solid;
     border-color: sandybrown;
+}
+
+footer {
+    bottom: 0;
+    color: #fff;
+    margin-top: 150px!important;
+    padding-top: 200px!important;
+    position: relative;
+    right: 0;
+    width: 100vw;
+    overflow: hidden;
 }
