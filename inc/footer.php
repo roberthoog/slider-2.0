@@ -1,5 +1,4 @@
 <footer>
-<hr/>
     <p class="text-center">
         &copy; 2017<?php echo date('Y') > 2017 ? ' - ' . date('Y') : ''; ?> <a href="index.php" title="Gocciani AB">Gocciani AB</a>.
 

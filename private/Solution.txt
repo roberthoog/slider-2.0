@@ -1,0 +1,104 @@
+
+Here is the optimized and much correcter version of your query. It's based on the advices that I received - see "Explanations about JOINs".
+
+As you see:
+
+- I used a JOIN, not a LEFT JOIN anymore. And, because the JOIN has an "ON" keyword, it is an INNER JOIN, not a CROSS JOIN. Et voila the Big Bang Theory revealed :-)) 
+- Because "images" is the main table in this query, I used the conditions corresponding to it in the WHERE condition. The condititions related to "images_shops" I moved to the corresponding JOIN statement.
+
+	SELECT 
+		im.image_id,
+		im.filename,
+		im.display_start_date,
+		im.display_end_date,
+		imsh.shop_id,
+		im.upload_date
+	FROM images AS im
+	JOIN images_shops AS imsh ON 
+		imsh.image_id = im.image_id
+		AND (imsh.shop_id = 1 OR imsh.shop_id = 3)
+	WHERE 
+		CURDATE() BETWEEN im.display_start_date AND im.display_end_date
+	GROUP BY im.image_id
+	ORDER BY im.upload_date DESC
+	;
+
+
+
+And now let's see it step by step:
+
+Step 1)
+
+	SELECT ...
+	FROM images AS im
+	JOIN images_shops AS imsh ON 
+		imsh.image_id = im.image_id
+	;
+
+Fetches the records from "images", but only the ones that also have records in "images_shops" too. If an image of "images" has no correspondent in "images_shops", then will not be fetched. 
+
+------------------------------------------------------------
+
+Step 2)
+
+	SELECT ...
+	FROM images AS im
+	JOIN images_shops AS imsh ON 
+		imsh.image_id = im.image_id
+		AND (imsh.shop_id = 1 OR imsh.shop_id = 3)
+	;	
+
+The previous results are filtered by "imsh.shop_id".
+
+------------------------------------------------------------
+
+Step 3)
+
+	SELECT ...
+	FROM images AS im
+	JOIN images_shops AS imsh ON 
+		imsh.image_id = im.image_id
+		AND (imsh.shop_id = 1 OR imsh.shop_id = 3)
+	WHERE
+		CURDATE() BETWEEN im.display_start_date AND im.display_end_date
+	;
+
+The records are further filtered by the date condition.
+
+------------------------------------------------------------
+
+Step 4)
+
+	SELECT ...
+	FROM images AS im
+	JOIN images_shops AS imsh ON 
+		imsh.image_id = im.image_id
+		AND (imsh.shop_id = 1 OR imsh.shop_id = 3)
+	WHERE
+		CURDATE() BETWEEN im.display_start_date AND im.display_end_date
+	GROUP BY im.image_id
+	;
+
+	Because in "images_shops" are more records which can have the same "image_id", there will be record duplicates fetched. To these I applied "GROUP BY" to show only distinct records.
+
+------------------------------------------------------------
+
+Step 5)
+
+	SELECT ...
+	FROM images AS im
+	JOIN images_shops AS imsh ON 
+		imsh.image_id = im.image_id
+		AND (imsh.shop_id = 1 OR imsh.shop_id = 3)
+	WHERE
+		CURDATE() BETWEEN im.display_start_date AND im.display_end_date
+	GROUP BY im.image_id
+	ORDER BY im.upload_date DESC
+	;
+
+Apply ordering, descending.
+
+------------------------------------------------------------
+
+THE END
+

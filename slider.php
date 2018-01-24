@@ -5,48 +5,31 @@ include 'inc/connection.php';
 // Read the shop id from the query string.
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $shopId = $_GET['id'];
-
+    $imageId = "";
 
     /*
      * Get images list.
      */
-    $sql = 'SELECT DISTINCT
-                im.filename,
-                im.display_delay,
-                imsh.image_id,
-                im.display_start_date,
-                im.display_end_date,
-                imsh.shop_id         
-            FROM images_shops AS imsh
-            LEFT JOIN images AS im ON im.image_id = imsh.image_id 
-            LEFT JOIN shops AS sh ON sh.shop_id = imsh.shop_id 
-             WHERE 
-                imsh.shop_id = :shop_id OR imsh.shop_id = 12
-                AND CURDATE() >= im.display_start_date 
-                AND CURDATE() <= im.display_end_date';
+    $sql = 'SELECT 
+        im.image_id,
+        im.filename,
+        im.title,
+        im.display_start_date,
+        im.display_end_date,
+        imsh.shop_id,
+        im.upload_date
+    FROM images AS im
+    JOIN images_shops AS imsh ON 
+        imsh.image_id = im.image_id
+        AND imsh.shop_id = 12
+    WHERE 
+        CURDATE() BETWEEN im.display_start_date AND im.display_end_date
+    GROUP BY im.image_id
+    ORDER BY im.upload_date DESC';
 
-    $statement = $pdo->prepare($sql);
-    $statement->execute([
-        ':shop_id' => $shopId,
-
-
-    ]);
-    $images = $statement->fetchAll();
-
-/*
-    Get unique image ids if all shops are selected to avoid duplicate shows 
-    $image_id = $statement->fetchAll();
-    if ($shopId == 12) {
-    $sql = ' SELECT DISTINCT image_id 
-          FROM images_shops 
-          ORDER BY DATE(NOW()), image_id ASC';
     $statement = $pdo->prepare($sql);
     $statement->execute();
-    $image_id = $statement->fetchAll();
-    }
-*/ 
-
-
+    $images = $statement->fetchAll();
 }
 ?>
 
@@ -63,7 +46,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         if (!isset($errors)) {
             ?>
             <link href="css/slider-style.css" type="text/css" rel="stylesheet" />
-            <link href="css/slider-animations.php?id=<?php echo $shopId; ?>" type="text/css" rel="stylesheet" />
+            <link href="css/slider-animations.php?id=12" type="text/css" rel="stylesheet" />
             <script src="js/modernizr.custom.86080.js" type="text/javascript"></script>
             <?php
         }
@@ -76,16 +59,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             
             foreach ($errors as $error) {
                 ?>
-                <div class="row wide">
-                    <div class="small-12 columns">
-                        <div class="alert callout" data-closable>
-                            <i class="fa fa-exclamation-circle"></i> <?php echo $error; ?>
-                            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+               
                 <?php
             }
             
@@ -95,12 +69,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 <?php
                 foreach ($images as $image) {
                         $filename = $image['filename'];
-                
             ?>
 
                     <li>
                         <span>
-                            <img src="uploads/<?php echo $filename; ?>" alt="Slider Image" >
+                            <img src="uploads/<?php echo $filename; ?>" alt="Gocciani advertisement" >
                         </span>
                     </li>
                     <?php

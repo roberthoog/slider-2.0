@@ -2,7 +2,7 @@
 bower_components
 node_modules
 npm-debug.log
-
+uploads/
 
 # Build and Release Folders
 bin/
@@ -13,6 +13,7 @@ bin-release/
 
 # Other files and folders
 .settings/
+.lacie
 
 # Executables
 *.swf

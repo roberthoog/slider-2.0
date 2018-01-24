@@ -2,8 +2,6 @@ body {
     overflow-x: hidden;
 }
 
-
-
 .page-wrapper-clean {
     padding: 0;
 }
@@ -33,6 +31,11 @@ table.dataTable {
     margin-bottom: 20px;
 }
 
+.cell {
+    width: auto!important;
+    max-width: 400px!important;
+}
+
 .error-message,
 .success-message {
     padding: 5px;
@@ -49,11 +52,10 @@ table.dataTable {
 }
 
 legend {
-
     border-spacing: 10px;
     font-size: 22px;
     font-weight: 900;
-    color: sandybrown!important;
+    color: sandybrown !important;
 }
 
 button.success {
@@ -67,13 +69,14 @@ button.success {
 }
 
 .black {
-    background-color: #222;
+    background-color: #222!important;
+    color: #fff;
 }
 
-
 fieldset {
-    border: 3px solid sandybrown;
+    border: none;
     width: auto;
+    padding: 10px;
 }
 
 .outline {
@@ -85,14 +88,18 @@ a {
 }
 
 a:hover {
-    border-bottom: 1px solid sandybrown!important;
+    border-bottom: 1px solid sandybrown !important;
+}
+
+.sandybrown {
+    color: sandybrown;
 }
 
 .callout {
     position: relative;
     margin: 0 0 1rem 0;
     padding: 1rem;
-    border: 1px solid sandybrown!important;
+    border: 1px solid sandybrown !important;
     background-color: #222;
     color: #0a0a0a;
 }
@@ -101,13 +108,13 @@ input[type=checkbox]:hover {
     background-color: green;
 }
 
-
 input[type=checkbox] {
-    background-color: green!important;
+    background-color: green !important;
 }
 
 input[type='text'],
 input[type='number'] {
+
     /*max-width: 100%;*/
     border: 2px solid #222 !important;
 }
@@ -143,7 +150,6 @@ footer a:link {
     color: gold;
 }
 
-
 header,
 footer {
     margin: 0 auto;
@@ -152,6 +158,10 @@ footer {
     background-color: #444;
     border-top: 1px solid sandybrown;
     position: relative;
+}
+
+header {
+    margin-bottom: 50px;
 }
 
 h5:hover {
@@ -167,11 +177,11 @@ label {
 }
 
 .full {
-    width: 100%!important;
+    width: 100% !important;
 }
 
 .dataTables_info {
-    color: #fff!important;
+    color: #fff !important;
 }
 
 .menu {
@@ -191,10 +201,10 @@ hr {
 }
 
 footer {
-    bottom: 0;
+    bottom: 0!important;
     color: #fff;
-    margin-top: 150px!important;
-    padding-top: 200px!important;
+    margin-top: 150px !important;
+    padding-top: 200px !important;
     position: relative;
     right: 0;
     width: 100vw;

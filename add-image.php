@@ -18,9 +18,9 @@ if (isset($_POST['submitButton'])) {
     /*
      * Validate values.
      */
-    if (!$selectedShops) {
-        $errors[] = 'OBS! Ange minst en (eller alla) butik..';
-    }
+    // if (!$selectedShops) {
+    //     $errors[] = 'OBS! Ange minst en (eller alla) butik..';
+    // }
     if (empty($displayStartDate)) {
         $errors[] = 'OBS! Sätt startdatum';
     }
@@ -88,13 +88,13 @@ if (isset($_POST['submitButton'])) {
 
         $statement = $pdo->prepare($sql);
         $statement->execute([
-            ':title' => $imageTitle,
-            ':path' => $imagePath,
-            ':filename' => $imageFilename,
+            ':title'              => $imageTitle,
+            ':path'               => $imagePath,
+            ':filename'           => $imageFilename,
             ':display_start_date' => $displayStartDate,
-            ':display_end_date' => $displayEndDate,
-            ':display_delay' => $displayDelay,
-            ':upload_date' => date('Y-m-d'),
+            ':display_end_date'   => $displayEndDate,
+            ':display_delay'      => $displayDelay,
+            ':upload_date'        => date('Y-m-d'),
         ]);
 
         // Read the id of the inserted image.
@@ -118,7 +118,6 @@ if (isset($_POST['submitButton'])) {
                 ':shop_id' => $shopId,
             ]);
         }
-
         $imageSavedFlag = TRUE;
     }
 }
@@ -126,42 +125,46 @@ if (isset($_POST['submitButton'])) {
 /*
  * Get shops list.
  */
-$sql = 'SELECT 
-            shop_id,
-            city
+$sql = 'SELECT shop_id, city
         FROM shops';
 
 $statement = $pdo->prepare($sql);
 $statement->execute();
 $shops = $statement->fetchAll();
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <?php require 'inc/head-meta.php'; ?>
-
         <title>Gocciani AB | Admin bildvisning</title>
-
         <?php require 'inc/head-resources.php'; ?>
 <script>
+ $( function() {
+    $( ".datepicker1" ).datepicker({ dateFormat: 'yy-mm-dd' });
+    $( ".datepicker2" ).datepicker({ dateFormat: 'yy-mm-dd' });
+  } );
 
- </script>   
-<!-- 
-//      $(document).ready(function() {
-//    $('#checkall').click(function() {
-//      var checked = $(this).prop('checked');
-//      $('#checkboxes').find('input:checkbox').prop('checked', checked);
-//    });
-//  })
--->
-    </head>
+
+  $( function() {
+    $( document ).tooltip();
+  } );
+
+/*
+* display datepicker in form
+*/ 
+ $( function() {
+     $( ".datepicker1" ).datepicker({ dateFormat: 'yy-mm-dd', dayNamesMin: ['M', 'T', 'O', 'T', 'F', 'L', 'S']});
+     $( ".datepicker2" ).datepicker({ dateFormat: 'yy-mm-dd', dayNamesMin: ['M', 'T', 'O', 'T', 'F', 'L', 'S']});
+   } );
+</script>     
+ </head>
+ 
     <body>
-
         <?php require 'inc/header.php'; ?>
-
         <div class="row">
             <div class="small-12 columns">
-                <h2>Gocciani admin butiksslider</h2>
+                <h2>Gocciani admin bildspel</h2>
                 <h4>Lägg upp bild</h4>
             </div>
         </div>
@@ -170,7 +173,7 @@ $shops = $statement->fetchAll();
         if (isset($errors)) {
             foreach ($errors as $error) {
                 ?>
-                <div class="row wide">
+                <div class="row">
                     <div class="small-12 columns">
                         <div class="alert callout" data-closable>
                             <i class="fa fa-exclamation-circle"></i> <?php echo $error; ?>
@@ -203,15 +206,18 @@ $shops = $statement->fetchAll();
                 <form action="" method="post" enctype="multipart/form-data">
 
                     <div class="small-12 cell">
-                        <fieldset class="small-4 cell fieldset">
-                            <legend>Bildnamn med kort beskrivning</legend>
-                        <input type="text" name="imageTitle" id="imageTitle" placeholder="Wella Conditioner 500ml" value="<?php echo isset($imageTitle) ? $imageTitle : ''; ?>" required>
+                        <fieldset class="small-12 cell">
+                            <label for="picName">
+                            <i class=" sandybrown far fa-address-card"></i>
+                            Bildnamn</label>
+                        <input type="text" name="imageTitle" id="age" title="Visas ej i bildspelet men gör det lättare att administrera och ändra om bilderna har ett nanm."
+                         placeholder="Wella Conditioner 500ml" value="<?php echo isset($imageTitle) ? $imageTitle : ''; ?>" required>
                         </fieldset>
                     </div>
 
                     <div class="small-12 cell">
-                        <fieldset class="small-12 cell fieldset">
-                            <legend>Butik bilden ska visas</legend>
+                       <!--  <fieldset class="small-12 cell fieldset">
+                            <label>Butik bilden ska visas</label>
                             <?php
                             foreach ($shops as $shop) {
                                 $shopId = $shop['shop_id'];
@@ -220,8 +226,8 @@ $shops = $statement->fetchAll();
                                 $checked = isset($selectedShops) && in_array($shopId, $selectedShops) ? 'checked' : '';
                                 ?><br>
 
-    <input type="radio" checked name="shops[]" id="shop<?php echo $shopId; ?>" value="<?php echo $shopId; ?>"
-    <?php echo $checked; ?> >
+                                <input type="radio" checked name="shops[]" id="shop<?php echo $shopId; ?>" value="<?php echo $shopId; ?>"
+                                <?php echo $checked; ?> >
                                 <label for="shop<?php echo $shopId; ?>">
                                     <?php echo $shopCity; ?>
                                 </label>
@@ -230,36 +236,44 @@ $shops = $statement->fetchAll();
                     ?>
                                 
 
-                        </fieldset>
+                        </fieldset> -->
                     </div>
 
-                    <div class="small-4 cell">
-                         <fieldset class="small-4 cell fieldset">
-                            <legend>Startdatum för bildens visning</legend>
-                        <input type="text" class="datepicker" name='displayStartDate' id="displayStartDate" value="<?php echo isset($displayStartDate) ? $displayStartDate : ''; ?>" required placeholder="2017-12-01">
+                    <div class="small-12 cell">
+                         <fieldset class="small-12 cell">
+                            <label>
+                            <i class="far sandybrown fa-calendar-alt"></i>&nbsp;
+                            Startdatum för bildens visning</label>
+                            <input type="text" class="datepicker1" name='displayStartDate' id="displayStartDate" value="<?php echo isset($displayStartDate) ? $displayStartDate : ''; ?>" required placeholder="2017-12-01">
                         </fieldset>
                     </div>
 
                     <div class="small-12 cell">
-                         <fieldset class="small-12 cell fieldset">
-                            <legend>Slutdatum för bildens visning</legend>
-                        <input type="text" class="datepicker" name="displayEndDate" id="displayEndDate" value="<?php echo isset($displayEndDate) ? $displayEndDate : ''; ?>" required placeholder="2018-01-01">
+                         <fieldset class="small-12 cell">
+                            <label>
+                            <i class="far sandybrown fa-calendar-alt"></i>&nbsp;
+                            Slutdatum för bildens visning</label>
+                        <input type="text" class="datepicker2" name="displayEndDate" id="displayEndDate" value="<?php echo isset($displayEndDate) ? $displayEndDate : ''; ?>" required placeholder="2018-01-01">
                         </fieldset>
                     </div>
 
                     <div class="small-12 cell">
-                         <fieldset class="small-12 cell fieldset">
-                            <legend>Antal sekunder bild ska visas</legend>
-                        <input type="number" name="displayDelay" id="displayDelay" value="<?php echo isset($displayDelay) ? $displayDelay : '0'; ?>" required placeholder="10">
+                         <fieldset class="small-12 cell">
+                            <label>
+                            <i class="far sandybrown  fa-clock"></i>
+                            Antal sekunder bilden ska visas</label>
+                        <input type="number" name="displayDelay" id="displayDelay" value="<?php echo isset($displayDelay) ? $displayDelay : '5'; ?>" required placeholder="10">
                         </fieldset>
                     </div>
 
                     <div class="small-12 cell">
-                        <fieldset class="small-12 cell fieldset">
-                            <legend>Välj bild</legend>
-                            <input type="file" name="file">
-                            <button type="submit" name="submitButton" id="submitButton" class="button success" title="Ladda upp bild">
-                                <i class="fa fa-check" aria-hidden="true"></i> Ladda upp bild
+                        <fieldset class="small-12 cell">
+                            <label>
+                            <i class="far sandybrown  fa-file-image"></i>
+                            Välj bild</label>
+                            <input type="file" name="file" value="Bläddra">
+                            <button type="submit" name="submitButton" id="submitButton" class="button success" title="Genomför">
+                                <i class="fa sandybrown fa-upload"></i> Klart - ladda upp!
                             </button>
                         </fieldset>
                     </div>

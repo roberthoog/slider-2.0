@@ -53,7 +53,7 @@ $images = $statement->fetchAll();
     <head>
         <?php require 'inc/head-meta.php'; ?>
 
-        <title>Gocciani AB | Admin bilddatabas</title>
+        <title>Gocciani AB | Admin bildspel</title>
 
         <?php require 'inc/head-resources.php'; ?>
     </head>
@@ -65,7 +65,7 @@ $images = $statement->fetchAll();
 
         <div class="row">
             <div class="small-12 columns">
-                <h1>Gocciani bilddatabas</h1>
+                <h1>Redigera bilder</h1>
                 <h5>Här kan du genom knapparna till höger ändra datum, ta bort bilder samt visa respektive bild.</h5>
                 <h5>Genom att klicka på rubrikerna sorterar du om bilderna från nyast till äldst eller tvärtom, eller i bokstavsordning.
                  "Namn"-rubriken bör avslöja vilken bild det är, klicka annars på knappen "view" till höger.</h5>
@@ -116,8 +116,8 @@ $images = $statement->fetchAll();
                     <table class="hover stack master-table">
                         <thead>
                             <tr>
-                                <th class="dt-id-column">ID</th>
-                                <th>Butik</th>
+                                <th class="dt-id-column black">ID</th>
+                               <!--  <th>Butik</th> -->
                                 <th>Namn</th>
                                 <th>Uppladdat</th>
                                 <th>Filnamn</th>
@@ -130,7 +130,7 @@ $images = $statement->fetchAll();
                         <tbody>
                             <?php
                             foreach ($images as $image) {
-                                $imagesShopsId    = $image['images_shops_id'];
+                                // $imagesShopsId    = $image['images_shops_id'];
                                 $imageId          = $image['image_id'];
                                 $title            = $image['title'];
                                 $upload_date      = $image['upload_date'];
@@ -138,14 +138,10 @@ $images = $statement->fetchAll();
                                 $displayStartDate = $image['display_start_date'];
                                 $displayEndDate   = $image['display_end_date'];
                                 $displayDelay     = $image['display_delay'];
-                                $city             = $image['city'];
                                 ?>
                                 <tr id="<?php echo $imagesShopsId; ?>">
                                     <td class="dt-id-column">
                                         <?php echo $imagesShopsId; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $city; ?>
                                     </td>
                                     <td>
                                         <?php echo $title; ?>

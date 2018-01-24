@@ -14,7 +14,6 @@ screen and (min-width: 40em) {
 
 
 
-
 /*! normalize-scss | MIT/GPLv2 License | bit.ly/normalize-scss */
 
 html {
@@ -5385,7 +5384,7 @@ screen and (min-width: 64em) {
 .button.hollow.primary:hover[disabled],
 .button.hollow.primary:focus.disabled,
 .button.hollow.primary:focus[disabled] {
-    1 border: 1px solid #1779ba;
+    border: 1px solid #1779ba;
     color: #1779ba
 }
 
@@ -10508,6 +10507,14 @@ tr>td {
     font-size: 12px;
     letter-spacing: 1.1px;
     font-weight: 700
+}
+
+.row {
+    max-width: 95% !important
+}
+
+.wide {
+    width: 95% !important
 }
 
 .page-wrapper {

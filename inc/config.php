@@ -26,6 +26,7 @@ define('UPLOAD_ALLOWED_MIME_TYPES', [
     'image/jpeg',
     'image/png',
     'image/gif',
+    'video/mp4'
 ]);
 
 /*
@@ -42,4 +43,4 @@ define('CSS_VENDOR_PREFIXES', [
 ]);
 
 // Minimal animation-delay of the slider, in seconds.
-define('CSS_SLIDER_MINIMAL_ANIMATION_DELAY', 1.5);
+define('CSS_SLIDER_MINIMAL_ANIMATION_DELAY', 2);
