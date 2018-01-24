@@ -3,169 +3,71 @@ include 'inc/config.php';
 include 'inc/error-reporting.php';
 include 'inc/connection.php';
 
-$imageSavedFlag = FALSE;
+$imageDeletedFlag = FALSE;
 
-if (isset($_POST['submitButton'])) {
-    /*
-     * Get posted values.
-     */
-    $imageTitle = isset($_POST['imageTitle']) ? $_POST['imageTitle'] : '';
-    $displayStartDate = isset($_POST['displayStartDate']) ? $_POST['displayStartDate'] : '';
-    $displayEndDate = isset($_POST['displayEndDate']) ? $_POST['displayEndDate'] : '';
-    $displayDelay = isset($_POST['displayDelay']) ? $_POST['displayDelay'] : 0;
-    $selectedShops = isset($_POST['shops']) ? $_POST['shops'] : [];
+if (isset($_POST['deleteImageButton'])) {
+    if (empty($_POST['deleteImageButton']) || !is_numeric($_POST['deleteImageButton'])) {
+        $errors[] = 'Välj en bild att ta bort';
+    } else {
+        $imagesShopsId = $_POST['deleteImageButton'];
 
-    /*
-     * Validate values.
-     */
-    // if (!$selectedShops) {
-    //     $errors[] = 'OBS! Ange minst en (eller alla) butik..';
-    // }
-    if (empty($displayStartDate)) {
-        $errors[] = 'OBS! Sätt startdatum';
-    }
-    if (empty($displayEndDate)) {
-        $errors[] = 'OBS! Sätt sista dautum.';
-    }
-    if (empty($displayDelay)) {
-        $errors[] = 'OBS! Ange i sekunder hur länge bilden ska visas';
-    }
-
-    $imagePath = '';
-    $imageFilename = '';
-
-    /*
-     * Upload file.
-     */
-    if (!empty($_FILES)) {
-        if (isset($_FILES['file']['error'])) {
-            if ($_FILES['file']['error'] === UPLOAD_ERR_NO_FILE) {
-                // @todo to translate
-                $errors[] = 'No file provided.';
-            } elseif ($_FILES['file']['error'] === UPLOAD_ERR_OK) {
-                if ($_FILES['file']['size'] <= UPLOAD_MAX_FILE_SIZE) {
-                    $imageFilename = basename($_FILES['file']['name']);
-                    $imageType = $_FILES['file']['type'];
-                    $imageTmpName = $_FILES['file']['tmp_name'];
-
-                    $imagePath = rtrim(UPLOAD_DIR, '/') . '/' . $imageFilename;
-
-                    if (in_array($imageType, UPLOAD_ALLOWED_MIME_TYPES)) {
-                        if (!move_uploaded_file($imageTmpName, $imagePath)) {
-                            $errors[] = 'Vänligen försök igen. Ett fel uppstod..';
-                        }
-                    } else {
-                        $errors[] = 'Bara JPG, JPEG, PNG och GIF är tillåtna.';
-                    }
-                } else {
-                    $errors[] = 'F.';
-                }
-            }
-        }
-    }
-
-    if (!isset($errors)) {
         /*
-         * Save image.
+         * Delete image from images_shops.
          */
-        $sql = 'INSERT INTO images (
-                    title,
-                    path,
-                    filename,
-                    display_start_date,
-                    display_end_date,
-                    display_delay,
-                    upload_date
-                ) VALUES (
-                    :title,
-                    :path,
-                    :filename,
-                    :display_start_date,
-                    :display_end_date,
-                    :display_delay,
-                    :upload_date
-                )';
+        $sql = 'DELETE FROM images_shops 
+                WHERE images_shops_id = :images_shops_id';
 
         $statement = $pdo->prepare($sql);
         $statement->execute([
-            ':title'              => $imageTitle,
-            ':path'               => $imagePath,
-            ':filename'           => $imageFilename,
-            ':display_start_date' => $displayStartDate,
-            ':display_end_date'   => $displayEndDate,
-            ':display_delay'      => $displayDelay,
-            ':upload_date'        => date('Y-m-d'),
+            ':images_shops_id' => $imagesShopsId,
         ]);
-
-        // Read the id of the inserted image.
-        $lastInsertId = $pdo->lastInsertId();
-
-        /*
-         * Save a record for each selected shop in the checkboxes list.
-         */
-        foreach ($selectedShops as $shopId) {
-            $sql = 'INSERT INTO images_shops (
-                        image_id,
-                        shop_id
-                    ) VALUES (
-                        :image_id,
-                        :shop_id
-                    )';
-
-            $statement = $pdo->prepare($sql);
-            $statement->execute([
-                ':image_id' => $lastInsertId,
-                ':shop_id' => $shopId,
-            ]);
-        }
-        $imageSavedFlag = TRUE;
+        $imageDeletedFlag = TRUE;
     }
 }
 
 /*
- * Get shops list.
+ * Get images list.
  */
-$sql = 'SELECT shop_id, city
-        FROM shops';
+$sql = 'SELECT 
+            imsh.images_shops_id,
+            imsh.image_id,
+            im.title,
+            im.upload_date,
+            im.filename,
+            im.display_start_date,
+            im.display_end_date,
+            im.display_delay,
+            sh.city 
+        FROM images_shops AS imsh 
+        LEFT JOIN images AS im ON im.image_id = imsh.image_id 
+        LEFT JOIN shops AS sh ON sh.shop_id = imsh.shop_id 
+        ORDER BY sh.city ASC';
 
 $statement = $pdo->prepare($sql);
 $statement->execute();
-$shops = $statement->fetchAll();
+$images = $statement->fetchAll();
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
         <?php require 'inc/head-meta.php'; ?>
-        <title>Gocciani AB | Admin bildvisning</title>
+
+        <title>Gocciani AB | Admin bilddatabas</title>
+
         <?php require 'inc/head-resources.php'; ?>
-<script>
- $( function() {
-    $( ".datepicker1" ).datepicker({ dateFormat: 'yy-mm-dd' });
-    $( ".datepicker2" ).datepicker({ dateFormat: 'yy-mm-dd' });
-  } );
-
-
-  $( function() {
-    $( document ).tooltip();
-  } );
-
-/*
-* display datepicker in form
-*/ 
- $( function() {
-     $( ".datepicker1" ).datepicker({ dateFormat: 'yy-mm-dd', dayNamesMin: ['M', 'T', 'O', 'T', 'F', 'L', 'S']});
-     $( ".datepicker2" ).datepicker({ dateFormat: 'yy-mm-dd', dayNamesMin: ['M', 'T', 'O', 'T', 'F', 'L', 'S']});
-   } );
-</script>     
- </head>
- 
+    </head>
     <body>
+
         <?php require 'inc/header.php'; ?>
+
+        <div class="reveal" id="viewImageModal" data-reveal></div>
+
         <div class="row">
             <div class="small-12 columns">
-                <h2>Gocciani admin bildspel</h2>
-                <h4>Lägg upp bild</h4>
+                <h1>Gocciani bilddatabas</h1>
+                <h5>Här kan du genom knapparna till höger ändra datum, ta bort bilder samt visa respektive bild.</h5>
+                <h5>Genom att klicka på rubrikerna sorterar du om bilderna från nyast till äldst eller tvärtom, eller i bokstavsordning.
+                 "Namn"-rubriken bör avslöja vilken bild det är, klicka annars på knappen "view" till höger.</h5>
             </div>
         </div>
 
@@ -173,24 +75,22 @@ $shops = $statement->fetchAll();
         if (isset($errors)) {
             foreach ($errors as $error) {
                 ?>
-                <div class="row">
+                <div class="row wide">
                     <div class="small-12 columns">
-                        <div class="alert callout" data-closable>
                             <i class="fa fa-exclamation-circle"></i> <?php echo $error; ?>
                             <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                        </div>
                     </div>
                 </div>
                 <?php
             }
-        } elseif ($imageSavedFlag) {
+        } elseif ($imageDeletedFlag) {
             ?>
             <div class="row">
                 <div class="small-12 columns">
                     <div class="success callout" data-closable>
-                        <i class="fa fa-check-circle"></i> Bild <strong><?php echo "$imageFilename"; ?></strong> uppladdad!
+                        <strong><i class="fa fa-check-circle"></i> Bild raderad.</strong>
                         <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -203,85 +103,88 @@ $shops = $statement->fetchAll();
 
         <div class="row">
             <div class="small-12 columns">
-                <form action="" method="post" enctype="multipart/form-data">
+                    <a href="add-image.php" class="button success" title="Lägg till bild">
+                        <i class="fa fa-plus" aria-hidden="true"></i> Lägg till bild
+                    </a>
+            </div>
+        </div>
 
-                    <div class="small-12 cell">
-                        <fieldset class="small-12 cell">
-                            <label for="picName">
-                            <i class=" sandybrown far fa-address-card"></i>
-                            Bildnamn</label>
-                        <input type="text" name="imageTitle" id="age" title="Visas ej i bildspelet men gör det lättare att administrera och ändra om bilderna har ett nanm."
-                         placeholder="Wella Conditioner 500ml" value="<?php echo isset($imageTitle) ? $imageTitle : ''; ?>" required>
-                        </fieldset>
-                    </div>
-
-                    <div class="small-12 cell">
-                       <!--  <fieldset class="small-12 cell fieldset">
-                            <label>Butik bilden ska visas</label>
+        <div class="row">
+            <div class="small-12 columns">
+                <form action="" method="post">
+                    <table class="hover stack master-table">
+                        <thead>
+                            <tr>
+                                <th class="dt-id-column">ID</th>
+                                <th>Butik</th>
+                                <th>Namn</th>
+                                <th>Uppladdat</th>
+                                <th>Filnamn</th>
+                                <th>Start</th>
+                                <th>Slut</th>
+                                <th>Längd</th>
+                                <th>Hantera</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             <?php
-                            foreach ($shops as $shop) {
-                                $shopId = $shop['shop_id'];
-                                $shopCity = $shop['city'];
-
-                                $checked = isset($selectedShops) && in_array($shopId, $selectedShops) ? 'checked' : '';
-                                ?><br>
-
-                                <input type="radio" checked name="shops[]" id="shop<?php echo $shopId; ?>" value="<?php echo $shopId; ?>"
-                                <?php echo $checked; ?> >
-                                <label for="shop<?php echo $shopId; ?>">
-                                    <?php echo $shopCity; ?>
-                                </label>
+                            foreach ($images as $image) {
+                                $imagesShopsId    = $image['images_shops_id'];
+                                $imageId          = $image['image_id'];
+                                $title            = $image['title'];
+                                $upload_date      = $image['upload_date'];
+                                $filename         = $image['filename'];
+                                $displayStartDate = $image['display_start_date'];
+                                $displayEndDate   = $image['display_end_date'];
+                                $displayDelay     = $image['display_delay'];
+                                $city             = $image['city'];
+                                ?>
+                                <tr id="<?php echo $imagesShopsId; ?>">
+                                    <td class="dt-id-column">
+                                        <?php echo $imagesShopsId; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $city; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $title; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $upload_date; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $filename; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $displayStartDate; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $displayEndDate; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $displayDelay; ?> sek
+                                    </td>
+                                    <td>
+                                        <a href="<?php echo 'edit-image.php?id=' . $imageId; ?>" name="editImageButton" class="button primary small" title="Ändra">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i> Ändra
+                                        </a>
+                                        <button type="button" data-open="viewImageModal" name="viewImageButton" value="<?php echo $imageId; ?>" class="button secondary small view-image-button" title="Visa">
+                                            <i class="fa fa-eye" aria-hidden="true"></i> Visa
+                                        </button>
+                                        <button type="submit" name="deleteImageButton" value="<?php echo $imagesShopsId; ?>" class="button alert button-action-confirm small" title="Radera">
+                                            <i class="fa fa-trash" aria-hidden="true"></i> Radera
+                                        </button>
+                                    </td>
+                                </tr>
                                 <?php
                             }
-                    ?>
-                                
-
-                        </fieldset> -->
-                    </div>
-
-                    <div class="small-12 cell">
-                         <fieldset class="small-12 cell">
-                            <label>
-                            <i class="far sandybrown fa-calendar-alt"></i>&nbsp;
-                            Startdatum för bildens visning</label>
-                            <input type="text" class="datepicker1" name='displayStartDate' id="displayStartDate" value="<?php echo isset($displayStartDate) ? $displayStartDate : ''; ?>" required placeholder="2017-12-01">
-                        </fieldset>
-                    </div>
-
-                    <div class="small-12 cell">
-                         <fieldset class="small-12 cell">
-                            <label>
-                            <i class="far sandybrown fa-calendar-alt"></i>&nbsp;
-                            Slutdatum för bildens visning</label>
-                        <input type="text" class="datepicker2" name="displayEndDate" id="displayEndDate" value="<?php echo isset($displayEndDate) ? $displayEndDate : ''; ?>" required placeholder="2018-01-01">
-                        </fieldset>
-                    </div>
-
-                    <div class="small-12 cell">
-                         <fieldset class="small-12 cell">
-                            <label>
-                            <i class="far sandybrown  fa-clock"></i>
-                            Antal sekunder bilden ska visas</label>
-                        <input type="number" name="displayDelay" id="displayDelay" value="<?php echo isset($displayDelay) ? $displayDelay : '5'; ?>" required placeholder="10">
-                        </fieldset>
-                    </div>
-
-                    <div class="small-12 cell">
-                        <fieldset class="small-12 cell">
-                            <label>
-                            <i class="far sandybrown  fa-file-image"></i>
-                            Välj bild</label>
-                            <input type="file" name="file" value="Bläddra">
-                            <button type="submit" name="submitButton" id="submitButton" class="button success" title="Genomför">
-                                <i class="fa sandybrown fa-upload"></i> Klart - ladda upp!
-                            </button>
-                        </fieldset>
-                    </div>
+                            ?>
+                        </tbody>
+                    </table>
                 </form>
             </div>
         </div>
 
         <?php require 'inc/footer.php'; ?>
-
     </body>
 </html>

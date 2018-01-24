@@ -64,11 +64,11 @@ $images = $statement->fetchAll();
         <div class="reveal" id="viewImageModal" data-reveal></div>
 
         <div class="row">
-            <div class="small-12 columns">
+            <div class="small-12 large-6 columns">
                 <h1>Redigera bilder</h1>
-                <h5>Här kan du genom knapparna till höger ändra datum, ta bort bilder samt visa respektive bild.</h5>
-                <h5>Genom att klicka på rubrikerna sorterar du om bilderna från nyast till äldst eller tvärtom, eller i bokstavsordning.
-                 "Namn"-rubriken bör avslöja vilken bild det är, klicka annars på knappen "view" till höger.</h5>
+                <p>Här kan du genom knapparna till höger ändra datum, ta bort bilder samt visa respektive bild.</p>
+                <p>Genom att klicka på rubrikerna sorterar du om bilderna från nyast till äldst eller tvärtom, eller i bokstavsordning.
+                 "Namn"-rubriken bör avslöja vilken bild det är, klicka annars på knappen "view" till höger.</p>
             </div>
         </div>
 

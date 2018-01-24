@@ -23,6 +23,14 @@ table.dataTable {
     padding: 0;
 }
 
+p {
+    color: #efefef;
+}
+
+p:last-of-type {
+    margin-bottom: 100px;
+}
+
 #viewImageModal .card {
     border: none;
 }
